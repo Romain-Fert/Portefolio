@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio BTS SIO SISR - Romain</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark-preload");
+        }
+    </script>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h1 class="logo">Romain</h1>
+
+    <ul class="nav-links" id="navLinks">
+        <li class="dropdown">
+            <a href="index.html">Accueil ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="#about">À propos de moi</a></li>
+                <li><a href="#skills">Mes Compétences</a></li>
+                <li><a href="#timeline">Mon Parcours Scolaire</a></li>
+                <li><a href="#entreprises">Mon Parcours Professionnel</a></li>
+                <li><a href="#reseaux">Mes Réseaux professionnels</a></li>
+                <li><a href="#contact">Me Contacter</a></li>
+            </ul>
+        </li>
+        <li><a href="projets.html">Mes Projets</a></li>
+        <li><a href="cv.html">Mon CV</a></li>
+    </ul>
+
+    <div class="mobile-menu" id="mobileMenu">☰</div>
+    <button id="darkToggle"></button>
+</nav>
+
+<section class="hero">
+    <img src="1773392105636.jpg" alt="Photo de profil" class="profile-pic">
+    <h2>Portfolio BTS SIO option SISR</h2>
+    <p>
+        Étudiant en réseaux & infrastructures — administration systèmes, sécurité, virtualisation,
+        mise en place d'infrastructures fiables.
+    </p>
+    <a href="projets.html" class="btn">Voir mes projets</a>
+</section>
+
+<section class="section" id="about">
+    <h2>À propos de moi</h2>
+    <p>
+        Je suis étudiant en première année de BTS SIO option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) a MyDigitalSchool.
+        Je m'intéresse particulièrement à l'administration systèmes, la sécurité, la virtualisation
+        et la mise en place d'infrastructures robustes et sécurisées.
+    </p>
+</section>
+
+<section class="section" id="skills">
+    <h2>Mes compétences</h2>
+    <div class="skills-grid">
+        <div class="skill">Administration systèmes (Linux / Windows)</div>
+        <div class="skill">Réseaux (TCP/IP, VLAN, routage)</div>
+        <div class="skill">Virtualisation (VMware, VirtualBox)</div>
+        <div class="skill">Services réseau (DHCP, DNS, PXE)</div>
+        <div class="skill">Supervision & ticketing (GLPI)</div>
+        <div class="skill">Programmation (CSS, HTML, JavaScript)</div>
+        <div class="skill">Sécurité & bonnes pratiques</div>
+    </div>
+</section>
+
+<section class="section" id="timeline">
+    <h2>Mon Parcours Scolaire</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">2025 - 2027</div>
+            <p>BTS SIO (Systèmes informatiques au organisations) option SISR (Solutions d'infrastructure, systèmes et réseaux) en alternance, a MyDigitalSchool.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2023 - 2025</div>
+            <p>BAC RISC (Réseaux informatiques et systèmes communicants) en alternance, au CFA UTEC d'Emerainville.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="entreprises">
+    <h2>Mon Parcours Professionnel</h2>
+    <div class="projects-grid">
+        <div class="project-card entreprise-card">
+            <div class="logo-wrapper">
+                <img src="Logo-ratp.png" alt="Logo RATP" class="entreprise-logo">
+            </div>
+            <h3>RATP GROUP (2023 - 2025)</h3>
+            <p>Apprentie technicien en maintenance Informatique et électronique, sur le RER B</p>
+        </div>
+        <div class="project-card entreprise-card">
+            <div class="logo-wrapper">
+                <img src="securinfor-logo.webp" alt="Logo SecurInfor" class="entreprise-logo">
+            </div>
+            <h3>SecurInfor (2025 - 2027)</h3>
+            <p>Apprentie technicien Help desk support niveau 1</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="reseaux">
+    <h2>Mes Réseaux professionnels</h2>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/romain-fert-02bb1235a/" class="btn" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/Romain-Fert" class="btn" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <h2>Me Contacter</h2>
+    <form class="contact-form" action="https://formspree.io/f/meerygpw" method="POST">
+        <input type="text" name="name" placeholder="Votre nom">
+        <input type="email" name="email" placeholder="Votre email">
+        <textarea name="message" placeholder="Votre message"></textarea>
+        <button type="submit" class="btn">Envoyer</button>
+    </form>
+</section>
+
+<footer>
+    © 2025 - Portfolio Romain - BTS SIO SISR
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
