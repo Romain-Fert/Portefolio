@@ -1,57 +1,105 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Romain - BTS SIO SISR</title>
+    <title>Mon CV | Romain Fert</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 
-    <script>
-        if (localStorage.getItem("theme") === "dark") {
-            document.documentElement.classList.add("dark-preload");
-        }
-    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #d1d5db; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .text-gradient { background: linear-gradient(135deg, #10b981, #34d399, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
 </head>
+<body class="pt-24">
 
-<body>
+<nav class="fixed top-0 w-full z-50 glass-card border-b border-white/5 py-5 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center font-bold text-black text-2xl">R</div>
+                <span class="text-white font-extrabold text-2xl tracking-tighter uppercase italic">Romain</span>
+            </a>
+        </div>
+        
+        <div class="hidden md:flex gap-10 text-base font-bold text-gray-300 uppercase tracking-widest">
+            <a href="index.html#about" class="hover:text-emerald-400 transition-colors duration-300">À propos</a>
+            <a href="index.html#skills" class="hover:text-emerald-400 transition-colors duration-300">Compétences</a>
+            <a href="projets.html" class="hover:text-emerald-400 transition-colors duration-300">Projets</a>
+            <a href="cv.html" class="hover:text-emerald-400 transition-colors duration-300">Mon CV</a>
+        </div>
 
-<nav class="navbar">
-    <h1 class="logo">Romain</h1>
+        <a href="index.html#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-full text-sm font-black uppercase tracking-tighter transition-all shadow-lg shadow-emerald-900/20">
+            Contact
+        </a>
+    </nav>
 
-    <ul class="nav-links" id="navLinks">
-        <li class="dropdown">
-            <a href="index.html">Accueil ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="index.html#about">À propos de moi</a></li>
-                <li><a href="index.html#skills">Mes Compétences</a></li>
-                <li><a href="index.html#timeline">Mon Parcours Scolaire</a></li>
-                <li><a href="index.html#entreprises">Mon Parcours Professionnel</a></li>
-                <li><a href="index.html#reseaux">Mes Réseaux professionnels</a></li>
-                <li><a href="index.html#contact">Me Contacter</a></li>
-            </ul>
-        </li>
-        <li><a href="projets.html">Mes Projets</a></li>
-        <li><a href="cv.html">Mon CV</a></li>
-    </ul>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 uppercase italic tracking-tighter">
+                Mon <span class="text-gradient">Curriculum Vitae</span>
+            </h1>
+            <p class="text-gray-400 italic">Consultez mon parcours académique et professionnel ou téléchargez le document officiel.</p>
+        </div>
 
-    <div class="mobile-menu" id="mobileMenu">☰</div>
-    <button id="darkToggle"></button>
-</nav>
+        <div class="glass-card p-2 md:p-6 rounded-[2.5rem] flex flex-col items-center mb-16">
+            <div class="w-full h-[600px] md:h-[1000px] bg-white/5 rounded-3xl mb-8 overflow-hidden border border-white/10 shadow-2xl relative">
+                <embed 
+                    src="CV Français Simple Moderne Bleu (2) (1).pdf" 
+                    type="application/pdf" 
+                    width="100%" 
+                    height="100%" 
+                    class="rounded-2xl"
+                />
+                
+                <div class="absolute inset-0 flex flex-col items-center justify-center -z-10 text-center px-6">
+                    <i class="fas fa-file-pdf text-5xl text-gray-700 mb-4"></i>
+                    <p class="text-gray-500 italic text-sm">Si l'aperçu ne s'affiche pas, utilisez le bouton ci-dessous pour le télécharger.</p>
+                </div>
+            </div>
+            
+            <a href="CV Français Simple Moderne Bleu (2) (1).pdf" download class="group relative inline-flex items-center gap-4 bg-emerald-600 hover:bg-emerald-500 text-white px-12 py-5 rounded-2xl font-bold transition-all duration-300 shadow-xl shadow-emerald-900/40 overflow-hidden">
+                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <i class="fas fa-download text-xl animate-bounce"></i>
+                <span class="uppercase tracking-widest text-sm">Télécharger en format PDF</span>
+            </a>
+        </div>
 
-<section class="section">
-    <h2>Mon CV</h2>
-    <div class="project-card">
-        <h3>CV téléchargeable</h3>
-        <p>Vous pouvez télécharger mon CV complet au format PDF :</p>
-        <a href="CV Français Simple Moderne Bleu (2) (1).pdf" class="btn" download>Télécharger mon CV</a>
-    </div>
-</section>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            <div class="glass-card p-6 rounded-2xl text-center">
+                <div class="text-emerald-500 mb-3 text-2xl"><i class="fas fa-graduation-cap"></i></div>
+                <h3 class="text-white font-bold uppercase text-xs mb-1">Dernier Diplôme</h3>
+                <p class="text-gray-400 text-sm">BTS SIO SISR (En cours)</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl text-center">
+                <div class="text-blue-500 mb-3 text-2xl"><i class="fas fa-briefcase"></i></div>
+                <h3 class="text-white font-bold uppercase text-xs mb-1">Poste Actuel</h3>
+                <p class="text-gray-400 text-sm">Apprenti SecurInfor</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl text-center">
+                <div class="text-purple-500 mb-3 text-2xl"><i class="fas fa-map-marker-alt"></i></div>
+                <h3 class="text-white font-bold uppercase text-xs mb-1">Localisation</h3>
+                <p class="text-gray-400 text-sm">Île-de-France</p>
+            </div>
+        </div>
 
-<footer>
-    © 2025 - Portfolio Romain - BTS SIO SISR
-</footer>
+        <div class="text-center">
+            <a href="index.html" class="text-gray-600 hover:text-emerald-400 uppercase text-xs font-bold tracking-[0.4em] transition-all">
+                <i class="fas fa-arrow-left mr-2"></i> Revenir à la page principale
+            </a>
+        </div>
+    </main>
 
-<script src="script.js"></script>
+    <footer class="py-12 text-center text-gray-700 text-[10px] uppercase tracking-[0.3em] mt-12 border-t border-white/5">
+        © 2026 — Romain Fert • Tous droits réservés
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
