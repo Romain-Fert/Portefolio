@@ -1,41 +1,52 @@
-// DARK MODE
+// GESTION DU THÈME (SOMBRE / CLAIR)
 const toggle = document.getElementById("darkToggle");
+const htmlElement = document.documentElement; // Tailwind utilise souvent la classe sur <html>
 
-// Fonction pour mettre à jour l'icône
-function updateIcon() {
-    if (document.body.classList.contains("dark")) {
-        toggle.textContent = "☀️"; // Mode sombre → icône soleil
-    } else {
-        toggle.textContent = "🌙"; // Mode clair → icône lune
-    }
-}
-
-// Charger le thème sauvegardé
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-}
-updateIcon(); // Met l'icône correcte au chargement
-
-// Au clic : changer le thème + sauvegarder + changer icône
-toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
+// Fonction pour mettre à jour l'icône et l'apparence
+function updateThemeUI() {
+    if (htmlElement.classList.contains("dark")) {
+        // Mode sombre activé
+        if (toggle) toggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>'; 
         localStorage.setItem("theme", "dark");
     } else {
+        // Mode clair activé
+        if (toggle) toggle.innerHTML = '<i class="fas fa-moon text-emerald-400"></i>';
         localStorage.setItem("theme", "light");
     }
+}
 
-    updateIcon();
-});
+// Charger le thème sauvegardé au démarrage
+if (localStorage.getItem("theme") === "dark" || 
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    htmlElement.classList.add("dark");
+} else {
+    htmlElement.classList.remove("dark");
+}
+updateThemeUI();
 
-
-// MENU MOBILE
-const mobileMenu = document.getElementById("mobileMenu");
+// MENU MOBILE (BURGER)
+const mobileMenuBtn = document.getElementById("mobileMenu");
 const navLinks = document.getElementById("navLinks");
 
-if (mobileMenu && navLinks) {
-    mobileMenu.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener("click", () => {
+        // On bascule une classe Tailwind pour afficher/cacher le menu
+        navLinks.classList.toggle("hidden");
+        navLinks.classList.toggle("flex");
+        
+        // Animation simple de l'icône burger
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("hidden") ? "☰" : "✕";
     });
 }
+
+// EFFET DE SCROLL SUR LA NAVBAR
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('py-2', 'bg-black/80');
+        nav.classList.remove('py-4', 'bg-black/40');
+    } else {
+        nav.classList.add('py-4', 'bg-black/40');
+        nav.classList.remove('py-2', 'bg-black/80');
+    }
+});
