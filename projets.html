@@ -1,108 +1,142 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio BTS SIO SISR - Romain</title>
+    <title>Mes Projets | Romain Fert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
-    <script>
-        if (localStorage.getItem("theme") === "dark") {
-            document.documentElement.classList.add("dark-preload");
-        }
-    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #d1d5db; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .glass-card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-4px); }
+        .text-gradient { background: linear-gradient(135deg, #10b981, #34d399, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Style de la bulle / bouton */
+        .btn-action { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .glass-card:hover .btn-action { background: #10b981; color: white; border-color: #10b981; transform: scale(1.05); }
+    </style>
 </head>
+<body class="pt-24">
 
-<body>
-
-<nav class="navbar">
-    <h1 class="logo">Romain</h1>
-
-    <ul class="nav-links" id="navLinks">
-        <li class="dropdown">
-            <a href="index.html">Accueil ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="index.html#about">À propos de moi</a></li>
-                <li><a href="index.html#skills">Mes Compétences</a></li>
-                <li><a href="index.html#timeline">Mon Parcours Scolaire</a></li>
-                <li><a href="index.html#entreprises">Mon Parcours Professionnel</a></li>
-                <li><a href="index.html#reseaux">Mes Réseaux professionnels</a></li>
-                <li><a href="index.html#contact">Me Contacter</a></li>
-            </ul>
-        </li>
-        <li><a href="projets.html">Mes Projets</a></li>
-        <li><a href="cv.html">Mon CV</a></li>
-    </ul>
-
-    <div class="mobile-menu" id="mobileMenu">☰</div>
-    <button id="darkToggle"></button>
-</nav>
-
-<section class="section">
-    <h2>Mes Projets SISR</h2>
-
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <h3>Serveur PXE sous Debian 12</h3>
-            <p>Déploiement automatisé de postes clients via le réseau. Configuration DHCP, TFTP et images d'installation sous Debian 12.</p>
-            <a href="Installation serveur PXE.pdf" class="btn" download>
-                Télécharger la fiche technique
+<nav class="fixed top-0 w-full z-50 glass-card border-b border-white/5 py-5 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center font-bold text-black text-2xl">R</div>
+                <span class="text-white font-extrabold text-2xl tracking-tighter uppercase italic">Romain</span>
             </a>
         </div>
-
-        <div class="project-card">
-            <h3>Serveur GLPI (Ticketing) sous Debian 12</h3>
-            <p>Installation d'un serveur GLPI avec MariaDB sous VMware. Ticketing, gestion des utilisateurs et inventaire.</p>
-            <a href="serveur glpi.pdf" class="btn" download>
-                Télécharger la fiche technique
-            </a>
+        
+        <div class="hidden md:flex gap-10 text-base font-bold text-gray-300 uppercase tracking-widest">
+            <a href="index.html#about" class="hover:text-emerald-400 transition-colors duration-300">À propos</a>
+            <a href="index.html#skills" class="hover:text-emerald-400 transition-colors duration-300">Compétences</a>
+            <a href="projets.html" class="hover:text-emerald-400 transition-colors duration-300">Projets</a>
+            <a href="cv.html" class="hover:text-emerald-400 transition-colors duration-300">Mon CV</a>
         </div>
 
-        <div class="project-card">
-            <h3>Rapport d'activité professionnelle — RATP</h3>
-            <p>Rapport d'activité et rapport de synthèse professionnelle (RSP) réalisés lors de mon alternance au sein de la RATP.</p>
-            <a href="RATP.pdf" class="btn" download>
-                Télécharger le rapport
-            </a>
+        <a href="index.html#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-full text-sm font-black uppercase tracking-tighter transition-all shadow-lg shadow-emerald-900/20">
+            Contact
+        </a>
+    </nav>
+
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 uppercase italic">Mes <span class="text-gradient">Réalisations</span></h1>
+            <p class="text-gray-400 italic">Explorez mes projets en cliquant sur les cartes ci-dessous.</p>
         </div>
 
-        <div class="project-card">
-            <h3> Création d'un Wikipédia League Of Legends</h3>
-            <p>Site web regroupant personnages, sorts, items et informations du jeu League Of Legends en une seule page.</p>
-            <a href="https://romain-fert.github.io/Wiki-League-of-legends-/" class="btn" target="_blank">
-                Voir le site
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="serveur glpi.pdf" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-emerald-500 text-3xl mb-4"><i class="fas fa-tools"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Serveur GLPI</h3>
+                    <p class="text-gray-400 text-sm mb-6">Mise en place et gestion d'une solution complète de gestion de parc informatique et helpdesk.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
             </a>
-        </div>
 
-        <div class="project-card">
-            <h3> Création d'un site web de formation de pizza</h3>
-            <p>Site web multi-pages (accueil, formation, contact) réalisé d'après une maquette proposée en classe, avec images, vidéos et formulaires.</p>
-            <a href="https://romain-fert.github.io/Site-de-Formation-de-pizza/" class="btn" target="_blank">
-                Voir le site
+            <a href="Installation serveur PXE.pdf" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-blue-500 text-3xl mb-4"><i class="fas fa-server"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Serveur PXE</h3>
+                    <p class="text-gray-400 text-sm mb-6">Configuration d'un serveur de démarrage réseau pour le déploiement automatique de systèmes.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
             </a>
-        </div>
 
-         <div class="project-card">
-            <h3>Création d'un site interactif clavier & souris</h3>
-            <p>Site web ludique combinant clics simples, doubles clics, saisie de lettres et sélection de couleurs pour créer une expérience utilisateur immersive et interactive.</p>
-            <a href="https://romain-fert.github.io/Cr-ation-d-un-site-interactif-clavier-souris/" class="btn" target="_blank">
-                Voir le site
+            <a href="RATP.pdf" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 border-emerald-500/20 bg-emerald-900/5 flex flex-col justify-between">
+                <div>
+                    <div class="text-emerald-400 text-3xl mb-4"><i class="fas fa-file-contract"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Rapport RATP</h3>
+                    <p class="text-gray-400 text-sm mb-6">Documentation technique et analyse de mon activité au sein du RER B.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center border-emerald-500/30">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
             </a>
-        </div>
 
-                 <div class="project-card">
-            <h3>Création d'un mini jeux "trouvez le bon nombre"</h3>
-            <p>Site web ou il faut deviner le nombre secret en un minimum de tentatives.</p>
-            <a href="https://romain-fert.github.io/Cr-ation-mini-jeux-devinez-le-chiffre/" class="btn" target="_blank">
-                Voir le site
+            <a href="https://romain-fert.github.io/Wiki-LoL/" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-purple-500 text-3xl mb-4"><i class="fas fa-gamepad"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Site Wiki LoL</h3>
+                    <p class="text-gray-400 text-sm mb-6">Création d'une base de données interactive sur les champions de League of Legends.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
             </a>
-        </div>
 
+            <a href="https://romain-fert.github.io/Formation-Pizza/" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-orange-500 text-3xl mb-4"><i class="fas fa-pizza-slice"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Formation Pizza</h3>
+                    <p class="text-gray-400 text-sm mb-6">Site web vitrine dédié à un centre de formation de pizzaiolos.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+            <a href="https://romain-fert.github.io/Clic-Interactive/" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-pink-500 text-3xl mb-4"><i class="fas fa-mouse-pointer"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Clic Interactive</h3>
+                    <p class="text-gray-400 text-sm mb-6">Interface dynamique basée sur les interactions utilisateurs en temps réel.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+            <a href="https://romain-fert.github.io/Devinez-le-nombre/" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-yellow-500 text-3xl mb-4"><i class="fas fa-question-circle"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Devinez le nombre</h3>
+                    <p class="text-gray-400 text-sm mb-6">Petit jeu logique développé en JS pour travailler les boucles et conditions.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Cliquez ici <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <div class="text-center pb-20">
+        <a href="index.html" class="text-gray-600 hover:text-emerald-400 uppercase text-xs font-bold tracking-[0.4em] transition-all group">
+            <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i> Revenir à la page principale
+        </a>
     </div>
-</section>
 
-<script src="script.js"></script>
+    <footer class="py-12 text-center text-gray-700 text-xs uppercase tracking-widest">
+        © 2026 — Romain Fert
+    </footer>
+
 </body>
 </html>
