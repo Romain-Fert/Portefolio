@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Informatique | Romain Fert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #d1d5db; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .glass-card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-4px); }
+        .text-gradient { background: linear-gradient(135deg, #10b981, #34d399, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-action { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .glass-card:hover .btn-action { background: #10b981; color: white; border-color: #10b981; transform: scale(1.05); }
+    </style>
+</head>
+<body class="pt-24">
+
+<nav class="fixed top-0 w-full z-50 glass-card border-b border-white/5 py-5 px-6 md:px-12">
+    <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center font-bold text-black text-2xl">RF</div>
+                <span class="text-white font-extrabold text-2xl tracking-tighter uppercase italic">Romain Fert</span>
+            </a>
+        </div>
+
+        <div class="hidden md:flex gap-10 text-base font-bold text-gray-300 uppercase tracking-widest">
+            <a href="index.html#about" class="hover:text-emerald-400 transition-colors duration-300">À propos</a>
+            <a href="index.html#skills" class="hover:text-emerald-400 transition-colors duration-300">Compétences</a>
+            <a href="projets.html" class="hover:text-emerald-400 transition-colors duration-300">Projets</a>
+            <a href="veille.html" class="text-emerald-400 transition-colors duration-300">Veille</a>
+            <a href="cv.html" class="hover:text-emerald-400 transition-colors duration-300">Mon CV</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="index.html#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-full text-sm font-black uppercase tracking-tighter transition-all shadow-lg shadow-emerald-900/20">
+                Contact
+            </a>
+            <button id="mobileMenu" class="md:hidden text-white text-2xl focus:outline-none">☰</button>
+        </div>
+    </div>
+
+    <div id="navLinks" class="hidden flex-col gap-4 mt-4 text-base font-bold text-gray-300 uppercase tracking-widest md:hidden">
+        <a href="index.html#about" class="hover:text-emerald-400 transition-colors duration-300">À propos</a>
+        <a href="index.html#skills" class="hover:text-emerald-400 transition-colors duration-300">Compétences</a>
+        <a href="projets.html" class="hover:text-emerald-400 transition-colors duration-300">Projets</a>
+        <a href="veille.html" class="text-emerald-400">Veille</a>
+        <a href="cv.html" class="hover:text-emerald-400 transition-colors duration-300">Mon CV</a>
+        <a href="index.html#contact" class="hover:text-emerald-400 transition-colors duration-300">Contact</a>
+    </div>
+</nav>
+
+<section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4 uppercase italic">Veille <span class="text-gradient">Technologique</span></h1>
+        <p class="text-gray-400 italic">Ma sélection d'articles sur l'évolution de la cybersécurité, de l'intelligence artificielle et de la maintenance des infrastructures.</p>
+    </div>
+
+    <div class="mb-12">
+        <h2 class="text-2xl font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-emerald-500"></span> IA & Cybersécurité
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <a href="https://www.microsoft.com/fr-fr/security/business/security-101/what-is-ai-for-cybersecurity" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-emerald-500 text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">L'IA au service de la Cybersécurité (Microsoft)</h3>
+                    <p class="text-gray-400 text-sm mb-6">Analyse approfondie de la manière dont l'intelligence artificielle révolutionne la défense numérique. Cet article explore la détection proactive des menaces en temps réel, l'automatisation des réponses aux incidents et la lutte contre les cyberattaques de plus en plus sophistiquées.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Lire l'article <i class="fas fa-external-link-alt ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+            <a href="https://www.itforbusiness.fr/cisco-live-2025-ia-et-cybersecurite-au-centre-du-jeu-et-des-reseaux-92064" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-blue-500 text-3xl mb-4"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Cisco Live : L'IA au Cœur des Réseaux</h3>
+                    <p class="text-gray-400 text-sm mb-6">Retour sur les annonces majeures de Cisco concernant l'intégration native de l'IA au cœur des infrastructures réseaux. Focus sur la convergence entre l'observabilité des systèmes, la sécurité des flux de données et la simplification de la gestion de parc pour les administrateurs.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Lire l'article <i class="fas fa-external-link-alt ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="mb-20">
+        <h2 class="text-2xl font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-3">
+            <span class="w-8 h-0.5 bg-blue-500"></span> Maintenance & Infrastructures
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <a href="https://www.everping.eu/blog/maintenance-informatique" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-purple-500 text-3xl mb-4"><i class="fas fa-server"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Le Guide Complet de la Maintenance</h3>
+                    <p class="text-gray-400 text-sm mb-6">Un état des lieux des meilleures pratiques en matière de maintenance informatique d'entreprise. L'article détaille l'importance de l'équilibre entre maintenance préventive, corrective et évolutive pour garantir la continuité d'activité (PCA) et la performance des postes de travail.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Lire l'article <i class="fas fa-external-link-alt ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+            <a href="https://www.cover-me.io/blog/maintenance-des-reseaux-informatiques-un-enjeu-vital-pour-votre-entreprise" target="_blank" class="glass-card rounded-3xl overflow-hidden group p-8 flex flex-col justify-between">
+                <div>
+                    <div class="text-orange-500 text-3xl mb-4"><i class="fas fa-project-diagram"></i></div>
+                    <h3 class="text-xl font-bold text-white mb-3 uppercase tracking-tight">Maintenance Réseau : Un Enjeu Vital</h3>
+                    <p class="text-gray-400 text-sm mb-6">Une analyse centrée sur l'infrastructure réseau. Ce blog met en avant les risques liés au manque de supervision et de mise à jour des équipements (switchs, routeurs, pare-feux). Il expose comment une maintenance rigoureuse prévient les pannes bloquantes et sécurise les échanges de données.</p>
+                </div>
+                <div class="btn-action text-xs font-bold uppercase tracking-widest py-3 px-6 rounded-xl text-center">
+                    Lire l'article <i class="fas fa-external-link-alt ml-2 text-[10px]"></i>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<div class="text-center pb-20">
+    <a href="index.html" class="text-gray-600 hover:text-emerald-400 uppercase text-xs font-bold tracking-[0.4em] transition-all group">
+        <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i> Revenir à la page principale
+    </a>
+</div>
+
+<footer class="py-12 text-center text-gray-700 text-xs uppercase tracking-widest border-t border-white/5">
+    © 2026 — Romain Fert • Tous droits réservés
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
