@@ -43,10 +43,10 @@ if (mobileMenuBtn && navLinks) {
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
-        nav.classList.add('py-2', 'bg-black/80');
-        nav.classList.remove('py-4', 'bg-black/40');
+        nav.classList.add('py-3', 'shadow-2xl', 'bg-[#030712]/90');
+        nav.classList.remove('py-5');
     } else {
-        nav.classList.add('py-4', 'bg-black/40');
-        nav.classList.remove('py-2', 'bg-black/80');
+        nav.classList.add('py-5');
+        nav.classList.remove('py-3', 'shadow-2xl', 'bg-[#030712]/90');
     }
 });
