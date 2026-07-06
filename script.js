@@ -50,3 +50,15 @@ window.addEventListener('scroll', () => {
         nav.classList.remove('py-3', 'shadow-2xl', 'bg-[#030712]/90');
     }
 });
+
+// GESTION DU LIEN ACTIF DANS LA NAV
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+document.querySelectorAll(".nav-link").forEach(link => {
+    const linkPage = link.getAttribute("href").split("#")[0]; // enlève les ancres type index.html#about
+    if (linkPage === currentPage) {
+        link.classList.add("text-emerald-400");
+    } else {
+        link.classList.remove("text-emerald-400");
+    }
+});
