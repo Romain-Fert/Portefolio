@@ -49,21 +49,37 @@ window.addEventListener('scroll', () => {
 });
 
 // GESTION DU LIEN ACTIF DANS LA NAV
-// Compare l'URL de la page actuelle avec le href de chaque lien du menu
-// et applique automatiquement la couleur verte au bon endroit (desktop + mobile)
+// Compare l'URL ET l'ancre (#...) actuelles avec le href de chaque lien du menu
+// pour n'appliquer la couleur verte qu'au bon lien, sans en allumer plusieurs à la fois
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
+const currentHash = window.location.hash; // ex: "#about", "#skills", "#contact" ou ""
 
-document.querySelectorAll(".nav-link").forEach(link => {
-    // On enlève tout ce qui suit un # pour ne comparer que le nom du fichier
-    const linkPage = link.getAttribute("href").split("#")[0];
+function updateActiveNavLink() {
+    document.querySelectorAll(".nav-link").forEach(link => {
+        const href = link.getAttribute("href");
+        const [hrefPage, hrefHash] = href.split("#");
+        const linkPage = hrefPage || currentPage;
+        const linkHash = hrefHash ? "#" + hrefHash : "";
 
-    if (linkPage === currentPage) {
-        link.classList.add("text-emerald-400");
-        link.classList.remove("hover:text-emerald-400");
-    } else {
-        link.classList.remove("text-emerald-400");
-        if (!link.classList.contains("hover:text-emerald-400")) {
-            link.classList.add("hover:text-emerald-400");
+        // Le lien est actif seulement si :
+        // - c'est la bonne page (index.html, veille.html, cv.html, projets.html...)
+        // - ET la bonne ancre (même # ou aucune ancre des deux côtés)
+        const isActive = (linkPage === currentPage) && (linkHash === currentHash);
+
+        if (isActive) {
+            link.classList.add("text-emerald-400");
+            link.classList.remove("hover:text-emerald-400");
+        } else {
+            link.classList.remove("text-emerald-400");
+            if (!link.classList.contains("hover:text-emerald-400")) {
+                link.classList.add("hover:text-emerald-400");
+            }
         }
-    }
-});
+    });
+}
+
+updateActiveNavLink();
+
+// Si l'utilisateur clique sur une ancre de la même page (À propos, Compétences, Contact),
+// on remet à jour le lien actif sans recharger la page
+window.addEventListener("hashchange", updateActiveNavLink);
