@@ -1,7 +1,6 @@
 // GESTION DU THÈME (SOMBRE / CLAIR)
 const toggle = document.getElementById("darkToggle");
 const htmlElement = document.documentElement; // Tailwind utilise souvent la classe sur <html>
-
 // Fonction pour mettre à jour l'icône et l'apparence
 function updateThemeUI() {
     if (htmlElement.classList.contains("dark")) {
@@ -14,7 +13,6 @@ function updateThemeUI() {
         localStorage.setItem("theme", "light");
     }
 }
-
 // Charger le thème sauvegardé au démarrage
 if (localStorage.getItem("theme") === "dark" || 
     (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -27,7 +25,6 @@ updateThemeUI();
 // MENU MOBILE (BURGER)
 const mobileMenuBtn = document.getElementById("mobileMenu");
 const navLinks = document.getElementById("navLinks");
-
 if (mobileMenuBtn && navLinks) {
     mobileMenuBtn.addEventListener("click", () => {
         // On bascule une classe Tailwind pour afficher/cacher le menu
@@ -52,13 +49,21 @@ window.addEventListener('scroll', () => {
 });
 
 // GESTION DU LIEN ACTIF DANS LA NAV
+// Compare l'URL de la page actuelle avec le href de chaque lien du menu
+// et applique automatiquement la couleur verte au bon endroit (desktop + mobile)
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
 document.querySelectorAll(".nav-link").forEach(link => {
-    const linkPage = link.getAttribute("href").split("#")[0]; // enlève les ancres type index.html#about
+    // On enlève tout ce qui suit un # pour ne comparer que le nom du fichier
+    const linkPage = link.getAttribute("href").split("#")[0];
+
     if (linkPage === currentPage) {
         link.classList.add("text-emerald-400");
+        link.classList.remove("hover:text-emerald-400");
     } else {
         link.classList.remove("text-emerald-400");
+        if (!link.classList.contains("hover:text-emerald-400")) {
+            link.classList.add("hover:text-emerald-400");
+        }
     }
 });
