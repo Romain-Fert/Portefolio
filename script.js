@@ -52,9 +52,12 @@ window.addEventListener('scroll', () => {
 // Compare l'URL ET l'ancre (#...) actuelles avec le href de chaque lien du menu
 // pour n'appliquer la couleur verte qu'au bon lien, sans en allumer plusieurs à la fois
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
-const currentHash = window.location.hash; // ex: "#about", "#skills", "#contact" ou ""
 
 function updateActiveNavLink() {
+    // On relit le hash à CHAQUE appel (et pas une seule fois au chargement),
+    // sinon un clic sur une ancre de la même page ne met pas à jour l'état actif
+    const currentHash = window.location.hash; // ex: "#about", "#skills", "#contact" ou ""
+
     document.querySelectorAll(".nav-link").forEach(link => {
         const href = link.getAttribute("href");
         const [hrefPage, hrefHash] = href.split("#");
