@@ -103,10 +103,10 @@ html .timeline-item::before {
 .bg-white\/5 { background-color: var(--blue-50) !important; }
 .hover\:bg-white\/10:hover { background-color: var(--blue-100) !important; }
 .hover\:bg-emerald-500\/10:hover { background-color: rgba(37, 99, 235, 0.08) !important; }
-.bg-emerald-900\/5 { background-color: #fef9c3 !important; }
+.bg-emerald-900\/5 { background-color: rgba(255, 255, 255, 0.82) !important; }
 
-/* Logo RATP : plus lisible sur fond clair */
-img[src*="Logo-ratp"] { filter: grayscale(1) contrast(1.6) brightness(0.55) !important; }
+/* Logo RATP : couleurs d'origine (on retire le filtre gris) */
+img[src*="Logo-ratp"] { filter: none !important; }
 
 /* Halos flous de la page d'accueil */
 .bg-emerald-600\/20 { background-color: rgba(250, 204, 21, 0.35) !important; }
