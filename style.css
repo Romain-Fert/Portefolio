@@ -45,7 +45,7 @@ html .glass-card:hover {
 
 /* Dégradé de texte : bleu vers jaune */
 html .text-gradient {
-    background-image: linear-gradient(135deg, #2563eb 0%, #0ea5e9 55%, #f59e0b 100%);
+    background-image: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0ea5e9 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,7 +103,10 @@ html .timeline-item::before {
 .bg-white\/5 { background-color: var(--blue-50) !important; }
 .hover\:bg-white\/10:hover { background-color: var(--blue-100) !important; }
 .hover\:bg-emerald-500\/10:hover { background-color: rgba(37, 99, 235, 0.08) !important; }
-.bg-emerald-900\/5 { background-color: rgba(250, 204, 21, 0.18) !important; }
+.bg-emerald-900\/5 { background-color: #fef9c3 !important; }
+
+/* Logo RATP : plus lisible sur fond clair */
+img[src*="Logo-ratp"] { filter: grayscale(1) contrast(1.6) brightness(0.55) !important; }
 
 /* Halos flous de la page d'accueil */
 .bg-emerald-600\/20 { background-color: rgba(250, 204, 21, 0.35) !important; }
