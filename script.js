@@ -1,20 +1,16 @@
 // GESTION DU THÈME (SOMBRE / CLAIR)
 const toggle = document.getElementById("darkToggle");
-const htmlElement = document.documentElement; // Tailwind utilise souvent la classe sur <html>
-// Fonction pour mettre à jour l'icône et l'apparence
+const htmlElement = document.documentElement;
 function updateThemeUI() {
     if (htmlElement.classList.contains("dark")) {
-        // Mode sombre activé
-        if (toggle) toggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>'; 
+        if (toggle) toggle.innerHTML = '<i class="fas fa-sun text-yellow-400"></i>';
         localStorage.setItem("theme", "dark");
     } else {
-        // Mode clair activé
         if (toggle) toggle.innerHTML = '<i class="fas fa-moon text-emerald-400"></i>';
         localStorage.setItem("theme", "light");
     }
 }
-// Charger le thème sauvegardé au démarrage
-if (localStorage.getItem("theme") === "dark" || 
+if (localStorage.getItem("theme") === "dark" ||
     (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     htmlElement.classList.add("dark");
 } else {
@@ -27,11 +23,8 @@ const mobileMenuBtn = document.getElementById("mobileMenu");
 const navLinks = document.getElementById("navLinks");
 if (mobileMenuBtn && navLinks) {
     mobileMenuBtn.addEventListener("click", () => {
-        // On bascule une classe Tailwind pour afficher/cacher le menu
         navLinks.classList.toggle("hidden");
         navLinks.classList.toggle("flex");
-        
-        // Animation simple de l'icône burger
         mobileMenuBtn.innerHTML = navLinks.classList.contains("hidden") ? "☰" : "✕";
     });
 }
@@ -40,33 +33,25 @@ if (mobileMenuBtn && navLinks) {
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
-        nav.classList.add('py-3', 'shadow-2xl', 'bg-[#030712]/90');
+        nav.classList.add('py-3', 'shadow-2xl');
         nav.classList.remove('py-5');
     } else {
         nav.classList.add('py-5');
-        nav.classList.remove('py-3', 'shadow-2xl', 'bg-[#030712]/90');
+        nav.classList.remove('py-3', 'shadow-2xl');
     }
 });
 
 // GESTION DU LIEN ACTIF DANS LA NAV
-// Compare l'URL ET l'ancre (#...) actuelles avec le href de chaque lien du menu
-// pour n'appliquer la couleur verte qu'au bon lien, sans en allumer plusieurs à la fois
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
 function updateActiveNavLink() {
-    // On relit le hash à CHAQUE appel (et pas une seule fois au chargement),
-    // sinon un clic sur une ancre de la même page ne met pas à jour l'état actif
-    const currentHash = window.location.hash; // ex: "#about", "#skills", "#contact" ou ""
+    const currentHash = window.location.hash;
 
     document.querySelectorAll(".nav-link").forEach(link => {
         const href = link.getAttribute("href");
         const [hrefPage, hrefHash] = href.split("#");
         const linkPage = hrefPage || currentPage;
         const linkHash = hrefHash ? "#" + hrefHash : "";
-
-        // Le lien est actif seulement si :
-        // - c'est la bonne page (index.html, veille.html, cv.html, projets.html...)
-        // - ET la bonne ancre (même # ou aucune ancre des deux côtés)
         const isActive = (linkPage === currentPage) && (linkHash === currentHash);
 
         if (isActive) {
@@ -82,7 +67,98 @@ function updateActiveNavLink() {
 }
 
 updateActiveNavLink();
-
-// Si l'utilisateur clique sur une ancre de la même page (À propos, Compétences, Contact),
-// on remet à jour le lien actif sans recharger la page
 window.addEventListener("hashchange", updateActiveNavLink);
+
+// ===================================================
+// ANIMATIONS : entrée, apparition, cartes 3D, parallaxe
+// ===================================================
+(function () {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return; // respecte le réglage "réduire les animations"
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // 1) Entrée de la page : photo, titre, texte, boutons arrivent l'un après l'autre
+    document.querySelectorAll('h1, h1 + p, .min-h-screen > .group, .min-h-screen > .flex')
+        .forEach((el, i) => {
+            el.classList.add('hero-in');
+            el.style.setProperty('--d', (i * 0.12) + 's');
+        });
+
+    // 2) Apparition des cartes, titres de section et étapes de la timeline au défilement
+    const targets = [...document.querySelectorAll('.glass-card, section h2, .timeline-item')]
+        .filter(el => !el.closest('nav') && !el.closest('.min-h-screen'));
+
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                el.classList.add('in');
+                setTimeout(() => { el.style.transitionDelay = ''; }, 1200);
+                io.unobserve(el);
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        targets.forEach(el => {
+            const index = [...el.parentElement.children].indexOf(el);
+            el.style.transitionDelay = Math.min(index, 5) * 90 + 'ms'; // petit décalage entre cartes voisines
+            el.classList.add('reveal');
+            io.observe(el);
+        });
+    }
+
+    // 3) Cartes inclinables en 3D qui suivent la souris (ordinateur uniquement)
+    document.querySelectorAll('.glass-card').forEach(card => {
+        if (card.closest('nav')) return;
+        if (!fine || card.classList.contains('rounded-full') || card.querySelector('embed, form')) {
+            card.classList.add('no-tilt');
+            return;
+        }
+        card.addEventListener('pointermove', (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width;
+            const y = (e.clientY - r.top) / r.height;
+            const max = r.width > 700 ? 2.5 : 8; // grandes cartes : inclinaison réduite
+            card.style.setProperty('--ry', ((x - 0.5) * 2 * max) + 'deg');
+            card.style.setProperty('--rx', ((0.5 - y) * 2 * max) + 'deg');
+            card.style.setProperty('--mx', (x * 100) + '%');
+            card.style.setProperty('--my', (y * 100) + '%');
+        });
+        card.addEventListener('pointerleave', () => {
+            card.style.setProperty('--rx', '0deg');
+            card.style.setProperty('--ry', '0deg');
+        });
+    });
+
+    // 4) Barre de progression + parallaxe des halos de l'accueil
+    const bar = document.createElement('div');
+    bar.id = 'scrollBar';
+    document.body.appendChild(bar);
+
+    const blobs = [...document.querySelectorAll('[class*="blur-[120px]"]')];
+    let mx = 0, my = 0, ticking = false;
+
+    function frame() {
+        ticking = false;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+        blobs.forEach((b, i) => {
+            const s = i % 2 ? -1 : 1;
+            b.style.transform = 'translate3d(' + (mx * 40 * s) + 'px,' + (my * 40 * s + window.scrollY * 0.15 * s) + 'px,0)';
+        });
+    }
+    function request() {
+        if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+    }
+
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+    if (fine) {
+        window.addEventListener('pointermove', (e) => {
+            mx = e.clientX / window.innerWidth - 0.5;
+            my = e.clientY / window.innerHeight - 0.5;
+            request();
+        });
+    }
+    frame();
+})();
