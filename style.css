@@ -49,6 +49,11 @@ html .text-gradient {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    /* l'italique dépasse à droite : on agrandit la zone du dégradé pour ne pas couper la dernière lettre */
+    padding-right: 0.15em;
+    margin-right: -0.15em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
 }
 
 /* Boutons des cartes (projets / veille) */
