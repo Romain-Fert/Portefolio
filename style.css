@@ -50,8 +50,8 @@ html .text-gradient {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     /* l'italique dépasse à droite : on agrandit la zone du dégradé pour ne pas couper la dernière lettre */
-    padding-right: 0.16em;
-    margin-right: -0.16em;
+    padding-right: 0.3em;
+    margin-right: -0.3em;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }
